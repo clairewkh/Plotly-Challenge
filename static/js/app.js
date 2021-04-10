@@ -76,6 +76,50 @@ d3.json(data_url).then(function(read_data){
             demoMetadata.append('p').text(`BBtype: ${fil_meta[0].bbtype}`);
             demoMetadata.append('p').text(`Wfreq: ${fil_meta[0].wfreq}`);
 
+            //Bubble Graph
+            var sample_val = fil_data[0].sample_values;
+            var otuIDS = fil_data[0].otu_ids
+            var bub_label = fil_data[0].otu_labels
+            console.log(bub_label) //Check if it is working or not
+
+            var bub_graph = [{
+                x: otuIDS,
+                y:sample_val,
+                text: bub_label,
+                mode:"markers",
+                marker:{
+                    size:sample_val,
+                    color:otuIDS,
+                    opacity: 0.9,
+                    colorscale:[
+                        [0, '#9999CC'],
+                        [0.2, '#CC66CC'],
+                        [0.2, '#CCCCFF'],
+                        [0.4, '#9900FF'],
+                        [0.4, '#99CCFF'],
+                        [0.6, '#66CCFF'],
+                        [0.6, '#6699FF'],
+                        [0.8, '#66FFCC'],
+                        [0.8, '#99ff33'],
+                        [1.0, '#009999'],
+                    ]
+                }
+            }]
+            var bub_layout = {
+                title: {
+                    text: `Test Subject No. ${select_id_names} Belly Button Biodiversity`,
+                    font: {
+                        family: 'Arial',
+                        size: 24,
+                        color: 'black'
+                    },
+                    height:700,
+                    width:1400,
+                    xaxis:{
+                        tickcolor: "red"
+                    }
+            }}
+            Plotly.newPlot("bubble", bub_graph, bub_layout)
             //Gauge-Bonus
             
             var data = [
@@ -112,14 +156,6 @@ d3.json(data_url).then(function(read_data){
             
             Plotly.newPlot('gauge', data, layout);
                 }
-            
-            
-            
-
-
-
-
-
         })
 
 
