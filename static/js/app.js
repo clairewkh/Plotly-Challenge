@@ -109,7 +109,7 @@ d3.json(data_url).then(function(read_data){
             ];
             // Layout 
             var layout = { width: 600, height: 450, margin: { t: 0, b: 0 } };
-            // Render the plot to the div tag with id 'gauge'
+            
             Plotly.newPlot('gauge', data, layout);
                 }
             
