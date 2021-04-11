@@ -1,4 +1,4 @@
-data_url = '../../data/samples1.json'
+data_url = './data/samples1.json'
 
 d3.json(data_url).then(function(read_data){
     var data1 = read_data;
